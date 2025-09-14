@@ -1,4 +1,5 @@
 ﻿using EF_01.Models;
+using EF_01.Models2;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ namespace EF_01.Contexts
         public DbSet<Emp_Qualifications> Emp_Qualifications { get; set; }
         public DbSet<Route> Routes { get; set; }
         public DbSet<Aircraft_Routes> Aircraft_Routes { get; set; }
+
+
+
 
     }
 }
