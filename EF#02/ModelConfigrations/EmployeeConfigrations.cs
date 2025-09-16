@@ -15,6 +15,8 @@ namespace EF_02.ModelConfigrations
         {
             builder.ToTable("EmployeeTable");
             builder.HasKey(E => E.EmpId);
+
+            builder.Property(e=>e.EmpId).UseIdentityColumn(10,10);
             builder.Property(e => e.Name).HasColumnName("EmployeeName").
                 HasMaxLength(50).IsRequired();
             builder.Property(e => e.Position)
