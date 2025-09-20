@@ -138,6 +138,33 @@ namespace EF_03
             //dbcontext.SaveChanges();
 
             #endregion
+
+            #region Question J
+
+            //var route = dbcontext.Routes
+            //    .FirstOrDefault(r => r.Origin == "Cairo" && r.Destination == "Dubai");
+
+            //var aircraft = dbcontext.AirCrafts
+            //    .FirstOrDefault(ac => ac.Model == "Model01");
+
+            //if (route != null && aircraft != null)
+            //{
+            //    var aircraftRoute = new AircraftRoute
+            //    {
+            //        AirCraftId = aircraft.Id,
+            //        RouteId = route.Id,
+            //        Price = 3000
+            //    };
+
+            //    dbcontext.Set<AircraftRoute>().Add(aircraftRoute);
+            //    dbcontext.SaveChanges();
+
+            //    dbcontext.Entry(aircraftRoute).Property("Duration").CurrentValue = TimeSpan.FromHours(4);
+
+            //    dbcontext.SaveChanges();
+            //}
+
+            #endregion
         }
     }
 }
