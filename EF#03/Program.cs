@@ -11,7 +11,7 @@ namespace EF_03
             using AirlineDbContext dbcontext = new AirlineDbContext();
 
             #region Question A
-         
+
 
             //dbcontext.Airlines.Add(new Airline
             //{
@@ -29,6 +29,23 @@ namespace EF_03
 
 
 
+
+            #endregion
+
+            #region Question B
+           
+            var AirlineId = dbcontext.Airlines?.FirstOrDefault(a => a.Name == "EgyptAir").Id;
+
+            if (AirlineId != null)
+            {
+                dbcontext.AirCrafts.Add(new AirCraft
+                {
+                    Model = "Model01",
+                    Capacity = 180,
+                    AirlineId = (int)AirlineId
+                });
+                dbcontext.SaveChanges();
+            }
 
             #endregion
         }
