@@ -20,8 +20,7 @@ namespace EF_03.Migrations
                     employeesId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContactPerson = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phones = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ContactPerson = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,6 +65,24 @@ namespace EF_03.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AirlinesPhones",
+                columns: table => new
+                {
+                    AirlineId = table.Column<int>(type: "int", nullable: false),
+                    phones = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AirlinesPhones", x => new { x.AirlineId, x.phones });
+                    table.ForeignKey(
+                        name: "FK_AirlinesPhones_Airlines_AirlineId",
+                        column: x => x.AirlineId,
+                        principalTable: "Airlines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
@@ -76,7 +93,6 @@ namespace EF_03.Migrations
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Qualifications = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AirlineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -162,6 +178,24 @@ namespace EF_03.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "EmployeeQualifications",
+                columns: table => new
+                {
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    Qualifications = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeQualifications", x => new { x.EmployeeId, x.Qualifications });
+                    table.ForeignKey(
+                        name: "FK_EmployeeQualifications_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AircraftRoute_RouteId",
                 table: "AircraftRoute",
@@ -190,10 +224,13 @@ namespace EF_03.Migrations
                 name: "AircraftRoute");
 
             migrationBuilder.DropTable(
+                name: "AirlinesPhones");
+
+            migrationBuilder.DropTable(
                 name: "Crews");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "EmployeeQualifications");
 
             migrationBuilder.DropTable(
                 name: "Transactions");
@@ -203,6 +240,9 @@ namespace EF_03.Migrations
 
             migrationBuilder.DropTable(
                 name: "AirCrafts");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Airlines");

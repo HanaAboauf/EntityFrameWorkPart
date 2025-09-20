@@ -16,6 +16,10 @@ namespace EF_03.ModelsConfigrations
             builder.HasMany(a => a.AirCrafts)
                    .WithOne(ac => ac.Airline)
                    .HasForeignKey(ac => ac.AirlineId);
+
+            builder.HasMany(a=>a.AirlinesPhones)
+                   .WithOne(ap=>ap.Airline)
+                   .HasForeignKey(ap=>ap.AirlineId);
         }
     }
 }

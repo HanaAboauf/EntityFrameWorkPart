@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_03.Migrations
 {
     [DbContext(typeof(AirlineDbContext))]
-    [Migration("20250920080437_CreateAirlineDB")]
+    [Migration("20250920085019_CreateAirlineDB")]
     partial class CreateAirlineDB
     {
         /// <inheritdoc />
@@ -97,16 +97,25 @@ namespace EF_03.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phones")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("employeesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Airlines");
+                });
+
+            modelBuilder.Entity("EF_03.Models.AirlinesPhones", b =>
+                {
+                    b.Property<int>("AirlineId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("phones")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AirlineId", "phones");
+
+                    b.ToTable("AirlinesPhones");
                 });
 
             modelBuilder.Entity("EF_03.Models.Crew", b =>
@@ -168,15 +177,24 @@ namespace EF_03.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Qualifications")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AirlineId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("EF_03.Models.EmployeeQualifications", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Qualifications")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("EmployeeId", "Qualifications");
+
+                    b.ToTable("EmployeeQualifications");
                 });
 
             modelBuilder.Entity("EF_03.Models.Route", b =>
@@ -265,6 +283,17 @@ namespace EF_03.Migrations
                     b.Navigation("Route");
                 });
 
+            modelBuilder.Entity("EF_03.Models.AirlinesPhones", b =>
+                {
+                    b.HasOne("EF_03.Models.Airline", "Airline")
+                        .WithMany("AirlinesPhones")
+                        .HasForeignKey("AirlineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Airline");
+                });
+
             modelBuilder.Entity("EF_03.Models.Crew", b =>
                 {
                     b.HasOne("EF_03.Models.AirCraft", "AirCraft")
@@ -285,6 +314,17 @@ namespace EF_03.Migrations
                         .IsRequired();
 
                     b.Navigation("Airline");
+                });
+
+            modelBuilder.Entity("EF_03.Models.EmployeeQualifications", b =>
+                {
+                    b.HasOne("EF_03.Models.Employee", "Employee")
+                        .WithMany("EmployeeQualifications")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("EF_03.Models.Transaction", b =>
@@ -310,9 +350,16 @@ namespace EF_03.Migrations
                 {
                     b.Navigation("AirCrafts");
 
+                    b.Navigation("AirlinesPhones");
+
                     b.Navigation("Transactions");
 
                     b.Navigation("employees");
+                });
+
+            modelBuilder.Entity("EF_03.Models.Employee", b =>
+                {
+                    b.Navigation("EmployeeQualifications");
                 });
 
             modelBuilder.Entity("EF_03.Models.Route", b =>

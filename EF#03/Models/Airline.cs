@@ -15,7 +15,6 @@ namespace EF_03.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string ContactPerson { get; set; }
-        public string Phones { get; set; }
 
         [InverseProperty(nameof(Employee.Airline))]
         public ICollection<Employee> employees { get; set; }=new HashSet<Employee>();
@@ -26,6 +25,8 @@ namespace EF_03.Models
 
 
         public ICollection<AirCraft> AirCrafts { get; set; }=new HashSet<AirCraft>();
+
+        public ICollection<AirlinesPhones> AirlinesPhones { get; set; }=new HashSet<AirlinesPhones>();
 
 
     }
