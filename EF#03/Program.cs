@@ -102,16 +102,27 @@ namespace EF_03
 
             #region Question G
 
-            var aircraft = dbcontext.AirCrafts.Where(ac => ac.Model == "Model01");
+            //var aircraft = dbcontext.AirCrafts.Where(ac => ac.Model == "Model01");
 
-            if (aircraft != null)
-            {
-                foreach (var ac in aircraft)
-                {
-                    ac.Capacity = 200;
-                }
-                dbcontext.SaveChanges();
-            }
+            //if (aircraft != null)
+            //{
+            //    foreach (var ac in aircraft)
+            //    {
+            //        ac.Capacity = 200;
+            //    }
+            //    dbcontext.SaveChanges();
+            //}
+
+            #endregion
+
+            #region Question H
+
+            //var oldTransactions = dbcontext.Transactions.Where(t => t.Date < new DateTime(2020, 1, 1)).ToList();
+            //if (oldTransactions.Any())
+            //{
+            //    dbcontext.Transactions.RemoveRange(oldTransactions);
+            //    dbcontext.SaveChanges();
+            //}
 
             #endregion
         }
