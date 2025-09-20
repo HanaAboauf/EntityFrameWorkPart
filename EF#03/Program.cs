@@ -64,6 +64,19 @@ namespace EF_03
             //    dbcontext.SaveChanges();
             //}
             #endregion
+
+            #region Question D
+
+            //var employees = dbcontext.Airlines
+            //  .Where(a => a.Name == "EgyptAir")
+            //  .Select(a => a.ContactPerson)
+            //  .ToList();
+            //foreach (var emp in employees)
+            //{
+            //    Console.WriteLine(emp);
+            //}
+
+            #endregion
         }
     }
 }
