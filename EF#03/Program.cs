@@ -77,6 +77,28 @@ namespace EF_03
             //}
 
             #endregion
+
+            #region Question E
+
+            //var transactions = dbcontext.Transactions.Where(t => t.Airline.Name == "EgyptAir")
+            //    .Select(t => new { t.Id, t.Description, t.Amount })
+            //    .ToList();
+            //foreach (var transaction in transactions)
+            //{
+            //    Console.WriteLine($"ID: {transaction.Id}, Description: {transaction.Description}, Amount: {transaction.Amount}");
+            //}
+            #endregion
+
+            #region Question F
+
+            //var employeeCounts = dbcontext.Airlines.GroupBy(a => a.Name)
+            //    .Select(g => new { AirlineName = g.Key, EmployeeCount = g.Select(a => a.ContactPerson).Count() })
+            //    .ToList();
+            //foreach (var item in employeeCounts)
+            //{
+            //    Console.WriteLine($"Airline: {item.AirlineName}, Employee Count: {item.EmployeeCount}");
+            //}
+            #endregion
         }
     }
 }
