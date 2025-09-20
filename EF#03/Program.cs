@@ -125,6 +125,19 @@ namespace EF_03
             //}
 
             #endregion
+
+            #region Question I
+
+            //dbcontext.Routes.Add(new Route()
+            //{
+            //    Origin = "Cairo",
+            //    Destination = "Dubai",
+            //    Classification = "International",
+            //    Distance = 2400
+            //});
+            //dbcontext.SaveChanges();
+
+            #endregion
         }
     }
 }
