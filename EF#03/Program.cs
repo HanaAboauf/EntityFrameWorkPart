@@ -11,7 +11,22 @@ namespace EF_03
             using AirlineDbContext dbcontext = new AirlineDbContext();
 
             #region Question A
-            //Insert a new airline named "EgyptAir" with contact person "Ahmed Ali", phone "0123456789" and “0113654789”, and address "Cairo".
+         
+
+            //dbcontext.Airlines.Add(new Airline
+            //{
+            //    Name = "EgyptAir",
+            //    ContactPerson = "Ahmed Ali",
+            //    Address = "Cairo",
+            //    AirlinesPhones = new List<AirlinesPhones>
+            //    {
+            //        new AirlinesPhones { phones = "0123456789" },
+            //        new AirlinesPhones { phones = "0113654789" }
+            //    }
+            //});
+
+            //dbcontext.SaveChanges();
+
 
 
 
