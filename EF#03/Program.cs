@@ -33,20 +33,36 @@ namespace EF_03
             #endregion
 
             #region Question B
-           
-            var AirlineId = dbcontext.Airlines?.FirstOrDefault(a => a.Name == "EgyptAir").Id;
 
-            if (AirlineId != null)
-            {
-                dbcontext.AirCrafts.Add(new AirCraft
-                {
-                    Model = "Model01",
-                    Capacity = 180,
-                    AirlineId = (int)AirlineId
-                });
-                dbcontext.SaveChanges();
-            }
+            //var AirlineId = dbcontext.Airlines?.FirstOrDefault(a => a.Name == "EgyptAir").Id;
 
+            //if (AirlineId != null)
+            //{
+            //    dbcontext.AirCrafts.Add(new AirCraft
+            //    {
+            //        Model = "Model01",
+            //        Capacity = 180,
+            //        AirlineId = (int)AirlineId
+            //    });
+            //    dbcontext.SaveChanges();
+            //}
+
+            #endregion
+
+            #region Question C
+
+            //var AirlineId = dbcontext.Airlines?.FirstOrDefault(a => a.Name == "EgyptAir").Id;
+            //if (AirlineId != null)
+            //{
+            //    dbcontext.Transactions.Add(new Transaction
+            //    {
+            //        AirlineId = (int)AirlineId,
+            //        Amount = 50000,
+            //        Date = DateTime.Now,
+            //        Description = "Tickets"
+            //    });
+            //    dbcontext.SaveChanges();
+            //}
             #endregion
         }
     }
