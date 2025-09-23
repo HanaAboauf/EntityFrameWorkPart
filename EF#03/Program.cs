@@ -386,11 +386,9 @@ namespace EF_03
             }
             #endregion
 
-                #endregion
+            #endregion
 
-
-
-                #endregion
+            #endregion
         }
     }
 }
