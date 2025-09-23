@@ -197,7 +197,97 @@ namespace EF_03
             //}
             #endregion
 
+            #region Question02
+
+            //var airlinesWithEmployeesAndQualifications = dbcontext.Airlines
+            //    .Include(a => a.employees)
+            //    .ThenInclude(e => e.EmployeeQualifications)
+            //    .GroupBy(a => a.Name)
+            //    .ToList();
+
+            //if(airlinesWithEmployeesAndQualifications is not null)
+            //{
+            //    foreach (var airlineGroup in airlinesWithEmployeesAndQualifications)
+            //    {
+            //        Console.WriteLine($"Airline: {airlineGroup.Key}");
+            //        foreach (var employee in airlineGroup.SelectMany(a => a.employees))
+            //        {
+            //            Console.WriteLine($" Employee: {employee.Name}, Position: {employee.Position}");
+            //            foreach (var qualification in employee.EmployeeQualifications)
+            //            {
+            //                Console.WriteLine($"  - Qualification: {qualification.Qualifications}");
+            //            }
+            //        }
+            //    }
+
+            //}
+
+            #endregion
+
+            #region Question03
+
+            //var airlinesWithHighValueTransactions = dbcontext.Airlines
+            //    .Include(a => a.Transactions.Where(t => t.Amount > 10000))
+            //    .ToList();
+
+            //if (airlinesWithHighValueTransactions is not null)
+            //{
+            //    foreach (var airline in airlinesWithHighValueTransactions)
+            //    {
+            //        Console.WriteLine($"Airline: {airline.Name}");
+            //        foreach (var transaction in airline.Transactions)
+            //        {
+            //            Console.WriteLine($" Transaction ID: {transaction.Id}, Amount: {transaction.Amount}, Date: {transaction.Date}, Description: {transaction.Description}");
+            //        }
+            //    }
+            //}
+            #endregion
+
+            #region Question04
+
+            //var routesWithAircraftModels = dbcontext.Routes.Include(r => r.AircraftRoutes)
+            //    .ThenInclude(ar => ar.AirCraft)
+            //    .ToList();
+
+            //if (routesWithAircraftModels is not null)
+            //{
+            //    foreach (var route in routesWithAircraftModels)
+            //    {
+            //        Console.WriteLine($"Route from {route.Origin} to {route.Destination}, Distance: {route.Distance} km, Classification: {route.Classification}");
+            //        Console.WriteLine("Assigned Aircrafts:");
+            //        foreach (var aircraftRoute in route.AircraftRoutes)
+            //        {
+            //            var aircraft = aircraftRoute.AirCraft;
+            //            Console.WriteLine($" - Aircraft Model: {aircraft.Model}, Capacity: {aircraft.Capacity}");
+            //        }
+            //    }
+            //}
+            #endregion
+
+            #region Question05
+
+            //var aircraftsWithAirlineAndPhones = dbcontext.AirCrafts.Include(ac => ac.Airline)
+            //    .ThenInclude(a => a.AirlinesPhones)
+            //    .ToList();
+
+            //if (aircraftsWithAirlineAndPhones is not null)
+            //{
+            //    foreach (var aircraft in aircraftsWithAirlineAndPhones)
+            //    {
+            //        Console.WriteLine($"Aircraft Model: {aircraft.Model}, Capacity: {aircraft.Capacity}");
+            //        Console.WriteLine($"Airline: {aircraft.Airline.Name}");
+            //        Console.WriteLine("Airline Phones:");
+            //        foreach (var phone in aircraft.Airline.AirlinesPhones)
+            //        {
+            //            Console.WriteLine($" - Phone: {phone.phones}");
+            //        }
+            //    }
+            //}
+            #endregion
+
                 #endregion
+
+
 
                 #endregion
         }
