@@ -36,6 +36,8 @@ namespace EF_03.DatabaseContexts
 
         public DbSet<Transaction> Transactions { get; set; }
 
+        public DbSet<AircraftRoute> AircraftRoutes { get; set; }
 
-    }
+
+        }
 }

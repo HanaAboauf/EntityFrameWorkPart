@@ -2,6 +2,7 @@
 
 using EF_03.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace EF_03
 {
@@ -283,6 +284,106 @@ namespace EF_03
             //        }
             //    }
             //}
+            #endregion
+
+            #endregion
+
+            #region Section B
+
+            #region Question01
+
+            //var employeesWithAirline = dbcontext.Employees.GroupJoin(dbcontext.Airlines,
+            //    emp => emp.Id,
+            //    air => air.employeesId,
+            //    (emp, air) => new
+            //    {
+            //        Employee = emp,
+            //        Airline = air
+            //    })
+            //    .SelectMany(ea => ea.Airline.DefaultIfEmpty(), (ea, air) => new
+            //    {
+            //        Name = ea.Employee.Name,
+            //        Position = ea.Employee.Position,
+            //        AirlineName = air != null ? air.Name : "No Airline"
+            //    })
+            //    .GroupBy(e => e.AirlineName)
+            //    .ToList();
+            //if (employeesWithAirline is not null)
+            //{
+            //    foreach (var airlineGroup in employeesWithAirline)
+            //    {
+            //        Console.WriteLine($"Airline: {airlineGroup.Key}");
+            //        foreach (var employee in airlineGroup)
+            //        {
+            //            Console.WriteLine($" - Employee: {employee.Name}, Position: {employee.Position}");
+            //        }
+            //    }
+            //}
+
+            #endregion
+
+            #region Question02
+
+            var routesWithAircraftAndAirline = dbcontext.Routes.GroupJoin(dbcontext.AircraftRoutes, r => r.Id, ar => ar.RouteId, (r,ar)=>new
+            {
+                Route = r,
+                AircraftRoutes = ar
+            }).SelectMany(
+                ra => ra.AircraftRoutes.DefaultIfEmpty(),
+                (r, ar) => new
+            {
+              RouteId = r.Route.Id,
+             Origin = r.Route.Origin,
+             Destination = r.Route.Destination,
+             AircarftModel=ar != null ? ar.AirCraft.Model : "No Aircraft Assigned",
+             AirlineName= ar != null ? ar.AirCraft.Airline.Name : "No Airline"
+
+                });
+            #endregion
+
+            #region Question03
+
+            var airlinesWithAircraftModels = dbcontext.Airlines.GroupJoin(dbcontext.AirCrafts,a=>a.Id,ac=>ac.AirlineId,(a,ac)=>new
+            {
+                Airline=a,
+                AirCrafts=ac
+            }).SelectMany(
+                aa=>aa.AirCrafts.DefaultIfEmpty(),
+                (a,ac)=>new
+                {
+                    AirlineName=a.Airline.Name,
+                    AircraftModel=ac != null ? ac.Model : "No Aircraft"
+                });
+            if (airlinesWithAircraftModels is not null)
+            {
+                foreach (var item in airlinesWithAircraftModels)
+                {
+                    Console.WriteLine($"Airline: {item.AirlineName}, Aircraft Model: {item.AircraftModel}");
+                }
+            }
+            #endregion
+
+            #region Question04
+            var transactionsWithAir=dbcontext.Transactions.GroupJoin(dbcontext.Airlines,t=>t.AirlineId,a=>a.Id,(t,a)=>new
+            {
+                Transaction=t,
+                Airline=a
+            }).SelectMany(
+                ta=>ta.Airline.DefaultIfEmpty(),
+                (t,a)=>new
+                {
+                    TransactionId=t.Transaction.Id,
+                    Amount=t.Transaction.Amount,
+                    Description=t.Transaction.Description,
+                    AirlineName=a != null ? a.Name : "No Airline"
+                }).Where(t=>t.Amount>20000);
+            if (transactionsWithAir is not null)
+            {
+                foreach (var item in transactionsWithAir)
+                {
+                    Console.WriteLine($"Transaction ID: {item.TransactionId}, Amount: {item.Amount}, Description: {item.Description}, Airline: {item.AirlineName}");
+                }
+            }
             #endregion
 
                 #endregion
