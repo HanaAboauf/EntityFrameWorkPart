@@ -1,6 +1,7 @@
 ﻿using EF_03.DatabaseContexts;
 
 using EF_03.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EF_03
 {
@@ -10,6 +11,7 @@ namespace EF_03
         {
             using AirlineDbContext dbcontext = new AirlineDbContext();
 
+            #region Assignment03
             #region Question A
 
 
@@ -165,6 +167,39 @@ namespace EF_03
             //}
 
             #endregion
+            #endregion
+
+            #region Assignment04
+
+            #region Section A
+
+            #region Question01
+
+
+            //var airlineWithAircraftsAndRoutes = dbcontext.Airlines.Include(a => a.AirCrafts)
+            //    .ThenInclude(ac => ac.AircraftRoutes)
+            //    .ThenInclude(ar => ar.Route)
+            //    .FirstOrDefault(a => a.Name == "EgyptAir");
+
+            //if (airlineWithAircraftsAndRoutes is not null)
+            //{
+            //    Console.WriteLine("The aircrafts of EgyptAir are");
+            //    foreach (var aircraft in airlineWithAircraftsAndRoutes.AirCrafts)
+            //    {
+            //        Console.WriteLine($"Aircraft Model: {aircraft.Model}, Capacity: {aircraft.Capacity}");
+            //        Console.WriteLine("Routes:");
+            //        foreach (var aircraftRoute in aircraft.AircraftRoutes)
+            //        {
+            //            var route = aircraftRoute.Route;
+            //            Console.WriteLine($" - From {route.Origin} to {route.Destination}, Distance: {route.Distance} km, Classification: {route.Classification}");
+            //        }
+            //    }
+            //}
+            #endregion
+
+                #endregion
+
+                #endregion
         }
     }
 }
