@@ -1,4 +1,5 @@
 ﻿using EF_03.Models;
+using EF_03.ModelsInheritance;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace EF_03.DatabaseContexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.Entity<Vehicle>()
+                .HasDiscriminator<string>("VehicleType")
+                .HasValue<Car>("Car")
+                .HasValue<Bus>("Bus");
         }
 
         public DbSet<Airline> Airlines { get; set; }
@@ -35,6 +41,10 @@ namespace EF_03.DatabaseContexts
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<AircraftRoute> AircraftRoutes { get; set; }
+
+
 
 
     }

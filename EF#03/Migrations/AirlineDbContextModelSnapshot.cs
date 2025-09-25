@@ -44,7 +44,7 @@ namespace EF_03.Migrations
 
                     b.HasIndex("AirlineId");
 
-                    b.ToTable("AirCrafts");
+                    b.ToTable("AirCrafts", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.AircraftRoute", b =>
@@ -71,7 +71,7 @@ namespace EF_03.Migrations
 
                     b.HasIndex("RouteId");
 
-                    b.ToTable("AircraftRoute");
+                    b.ToTable("AircraftRoute", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.Airline", b =>
@@ -99,7 +99,7 @@ namespace EF_03.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Airlines");
+                    b.ToTable("Airlines", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.AirlinesPhones", b =>
@@ -112,7 +112,7 @@ namespace EF_03.Migrations
 
                     b.HasKey("AirlineId", "phones");
 
-                    b.ToTable("AirlinesPhones");
+                    b.ToTable("AirlinesPhones", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.Crew", b =>
@@ -141,7 +141,7 @@ namespace EF_03.Migrations
 
                     b.HasKey("AirCraftId");
 
-                    b.ToTable("Crews");
+                    b.ToTable("Crews", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.Employee", b =>
@@ -178,7 +178,7 @@ namespace EF_03.Migrations
 
                     b.HasIndex("AirlineId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.EmployeeQualifications", b =>
@@ -191,7 +191,7 @@ namespace EF_03.Migrations
 
                     b.HasKey("EmployeeId", "Qualifications");
 
-                    b.ToTable("EmployeeQualifications");
+                    b.ToTable("EmployeeQualifications", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.Route", b =>
@@ -219,7 +219,7 @@ namespace EF_03.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Routes");
+                    b.ToTable("Routes", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.Transaction", b =>
@@ -247,7 +247,7 @@ namespace EF_03.Migrations
 
                     b.HasIndex("AirlineId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("EF_03.Models.AirCraft", b =>
